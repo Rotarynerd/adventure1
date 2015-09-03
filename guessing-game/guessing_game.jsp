@@ -37,31 +37,37 @@
 		<p></p>
 		<input type = "submit" value = "Submit">
 		<input type = "submit" value = "Hint" name = "hint">
+		<input type = "submit" value = "New Game" name = "newGame">
 	</form>
 
 	<p></p>
 <% 
 		
 		nextIteration = randomNum;
-		if (request.getParameter("hint") != null){
-			if (userInput > randomNum){ %>
-				Your guess is too large!
-			<%} 
-			else if (userInput < randomNum){ %>
-				Your guess is too small!
-			
-			<% }
+		if (request.getParameter("hint") != null){ %>
+				The randomly generated number is <%= randomNum %>
+			<% 
 		}
 		else if (userInput == 0){%>
 			Please Enter a Valid Number Between 1 and 10
 		<% }
 		else{
 			if (userInput == randomNum){%>
-				<strong>Congratulations! Your guess was right!</strong>
+				<strong>Congratulations! Your guess of <%= userInput %> was right!</strong>
+				<% if (request.getParameter("newGame") != null){
+					userInput = 0;
+				}%>
 			<%} 
-			else if (userInput != randomNum){%>
-				Your guess of <%= userInput %> is incorrect!
-			<%}
+			else if (userInput < randomNum){ %>
+			Your guess of <%= userInput %> is too small!
+		
+		<% }
+			else if (userInput > randomNum){ %>
+			Your guess of <%= userInput %> is too large!
+		
+		<% }
+			
+			
 		}
 	
 %>
