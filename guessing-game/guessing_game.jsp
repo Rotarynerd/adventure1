@@ -1,4 +1,4 @@
-<!doctype html>
+x<!doctype html>
 <html lang="en"> 
 <head> 
 <title>Guessing Game</title> 
@@ -23,7 +23,7 @@
 			userInput=0;
 	}
 	
-	if (userInput == randomNum){
+	if (userInput == 0){
 		nextIteration = (int)(Math.random() * 10) + 1;
 	}
 	else {
